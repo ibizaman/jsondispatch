@@ -31,3 +31,9 @@ JSON payload to send to url =/trigger/download_program_uri= with POST request:
 
 When sending the above POST request, jsondispatch will call the ~addUri~ RPC
 method of aria2 with the give magnet url and the hardcoded =dir= argument.
+
+** Develop
+
+#+BEGIN_SRC bash
+  pip install -e ".[dev,test]"
+#+END_SRC
