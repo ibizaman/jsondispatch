@@ -14,6 +14,7 @@ from string import Template
 
 import yaml
 from aiohttp import web
+import aiohttp_cors
 
 
 DEFAULT_CONFIG_FILES = [Path(p)
@@ -37,10 +38,7 @@ async def trigger_handler(request):
         command_config = request.app['config']['common'].get(command['command'], {})
         results.append(await command_method(command_config, **args))
 
-    # Access-Control-Allow-Origin needed so that browser extensions can be
-    # executed on any domain, CORS request that. Without this, the extension
-    # cannot read any response from the server.
-    return web.json_response(results, headers={'Access-Control-Allow-Origin': '*'})
+    return web.json_response(results)
 
 
 def import_module(module_name):
@@ -58,8 +56,19 @@ def run(port, config):
     logging.basicConfig(level=logging.DEBUG)
 
     app = web.Application()
-    app.router.add_post('/trigger/{name}', trigger_handler)
     app['config'] = config
+
+    cors = aiohttp_cors.setup(app, defaults={
+        config['cors']['domain']: aiohttp_cors.ResourceOptions(
+            allow_credentials=False,
+            expose_headers=['Content-Type'],
+            allow_headers=[],
+        )
+    })
+
+    trigger_resource = app.router.add_resource('/trigger/{name}')
+    cors.add(trigger_resource.add_route('POST', trigger_handler))
+
     try:
         web.run_app(app, port=port)
     except KeyboardInterrupt:
@@ -80,6 +89,12 @@ def parse_configs(config_files):
         raise RuntimeError("Found no configuration on given paths.")
 
     errors = []
+
+    if 'cors' not in conf:
+        errors.append("Missing required field 'cors'.")
+    else:
+        if 'domain' not in conf['cors']:
+            errors.append("Missing required field 'cors.domain'.")
 
     if 'common' not in conf:
         errors.append("Missing required field 'common'.")

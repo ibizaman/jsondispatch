@@ -17,6 +17,7 @@ with _open(path.join(HERE, 'README.md'), encoding='utf-8') as f:
         packages=find_packages(),
         install_requires=[
             'aiohttp == 2.3.7',
+            'aiohttp_cors == 0.6.0',
             'PyYAML == 3.12',
         ],
         extras_require={

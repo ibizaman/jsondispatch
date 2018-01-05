@@ -17,6 +17,9 @@ server.
 
 Config file =/etc/jsondispatch/jsondispatch.conf=:
 #+BEGIN_SRC yaml
+  cors:
+    domain: '*'
+
   common:
     aria2:
       url: http://localhost:6800/jsonrpc
