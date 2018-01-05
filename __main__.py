@@ -37,7 +37,10 @@ async def trigger_handler(request):
         command_config = request.app['config']['common'].get(command['command'], {})
         results.append(await command_method(command_config, **args))
 
-    return web.json_response(results)
+    # Access-Control-Allow-Origin needed so that browser extensions can be
+    # executed on any domain, CORS request that. Without this, the extension
+    # cannot read any response from the server.
+    return web.json_response(results, headers={'Access-Control-Allow-Origin': '*'})
 
 
 def import_module(module_name):

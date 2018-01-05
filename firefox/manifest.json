@@ -1,0 +1,27 @@
+{
+  "manifest_version": 2,
+  "name": "Send to Json Dispatch",
+  "description": "Send to jsondispatch json-rpc api",
+
+  "version": "0.1",
+  "homepage_url": "https://github.com/ibizaman/jsondispatch",
+
+  "developer": {
+    "name": "Pierre Penninckx"
+  },
+
+  "background": {
+      "scripts": ["util.js", "background.js"]
+  },
+
+  "permissions": [
+    "contextMenus",
+    "activeTab",
+    "tabs",
+    "storage",
+    "notifications"
+  ],
+  "options_ui": {
+      "page": "options.html"
+  }
+}
