@@ -2,6 +2,11 @@ function postRequest(base_url, json_data = {}) {
     var promise_server_url = browser.storage.local.get('server_url');
     Promise.all([promise_server_url]).then((res) => {
 
+        if (res[0]['server_url'] === undefined) {
+            console.warn('No json-rpc-url defined, set it in addon settings.');
+            _sendNotification("No json-rpc-url defined, set it in addon settings.");
+            return;
+        }
         var request = new XMLHttpRequest();
 
         var url = res[0]['server_url'] + '/' + base_url;
