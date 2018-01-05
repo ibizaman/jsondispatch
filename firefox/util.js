@@ -1,7 +1,15 @@
-function postRequest(base_url, json_data = {}) {
-    var promise_server_url = browser.storage.local.get('server_url');
-    Promise.all([promise_server_url]).then((res) => {
+function getRequest(base_url, callback = null) {
+    _request('get', base_url, null, callback);
+}
 
+function postRequest(base_url, json_data = {}, callback = null) {
+    _request('post', base_url, json_data, callback);
+}
+
+function _request(method, base_url, json_data, callback) {
+    var promise_server_url = browser.storage.local.get('server_url');
+
+    Promise.all([promise_server_url]).then((res) => {
         if (res[0]['server_url'] === undefined) {
             console.warn('No json-rpc-url defined, set it in addon settings.');
             _sendNotification("No json-rpc-url defined, set it in addon settings.");
@@ -10,18 +18,26 @@ function postRequest(base_url, json_data = {}) {
         var request = new XMLHttpRequest();
 
         var url = res[0]['server_url'] + '/' + base_url;
-        request.open('post', url, false);
+        request.open(method, url, false);
 
         request.onload = function(e) {
             if (this.status == 200) {
+                var result = JSON.parse(this.responseText);
                 _sendNotification("Download in progress");
+                if (callback !== null) {
+                    callback(result);
+                }
             } else {
                 _sendNotification("Download error", this.responseText);
             }
         };
 
         try {
-            request.send(JSON.stringify(json_data));
+            if (method === 'post') {
+                request.send(JSON.stringify(json_data));
+            } else {
+                request.send();
+            }
         } catch(e) {
             console.warn('Download could not send ajax request, reason %s', e.toString());
             _sendNotification("Download ERROR", e.toString());

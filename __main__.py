@@ -41,6 +41,11 @@ async def trigger_handler(request):
     return web.json_response(results)
 
 
+def get_triggers_handler(request):
+    commands = list(request.app['config']['triggers'].keys())
+    return web.json_response(commands)
+
+
 def import_module(module_name):
     spec = importlib.util.spec_from_file_location(module_name, 'trigger_commands/' + module_name + '.py')
     assert spec is not None, 'Could not import module {}'.format('trigger_commands.' + module_name)
@@ -68,6 +73,9 @@ def run(port, config):
 
     trigger_resource = app.router.add_resource('/trigger/{name}')
     cors.add(trigger_resource.add_route('POST', trigger_handler))
+
+    get_triggers_resource = app.router.add_resource('/triggers')
+    cors.add(get_triggers_resource.add_route('GET', get_triggers_handler))
 
     try:
         web.run_app(app, port=port)

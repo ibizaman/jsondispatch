@@ -1,22 +1,22 @@
 
 # Table of Contents
 
-1.  [Json Dispatch](#org4df669d)
-    1.  [Use Cases](#org7800d12)
-        1.  [Send file to aria2 and set download dir based on category](#org936354a)
-    2.  [Install & Use](#org1dff345)
-        1.  [Server](#org57a7c72)
-        2.  [Firefox extension](#org5a2581f)
-    3.  [Develop](#orgeb99c26)
+1.  [Json Dispatch](#org5171f0d)
+    1.  [Use Cases](#org2c3342d)
+        1.  [Send file to aria2 and set download dir based on category](#orgc420d7b)
+    2.  [Install & Use](#orgfb816e6)
+        1.  [Server](#org385c15c)
+        2.  [Firefox extension](#org63ac2a0)
+    3.  [Develop](#org9c5e2ac)
 
 
-<a id="org4df669d"></a>
+<a id="org5171f0d"></a>
 
 # Json Dispatch
 
 Server program written in python that accepts HTTP POST requests with a JSON
 payload and forwards the request to another program, after transforming it in a
-configurable way. Quite generic, but that's the goal. See [1.1](#org7800d12) for concrete
+configurable way. Quite generic, but that's the goal. See [1.1](#org2c3342d) for concrete
 examples.
 
 `Python 3.6` supported only, although other `Python 3.X` versions should work
@@ -27,12 +27,12 @@ and allows you to right click on a URL/link in your browser and "send it to" the
 server.
 
 
-<a id="org7800d12"></a>
+<a id="org2c3342d"></a>
 
 ## Use Cases
 
 
-<a id="org936354a"></a>
+<a id="orgc420d7b"></a>
 
 ### Send file to aria2 and set download dir based on category
 
@@ -62,15 +62,15 @@ When sending the above POST request, jsondispatch will call the `addUri` RPC
 method of aria2 with the given magnet URL and the hardcoded `dir` argument.
 
 Or just use the browser extension which does this for you with a right click on
-a magnet URL.
+a magnet URL (or any link for that matter).
 
 
-<a id="org1dff345"></a>
+<a id="orgfb816e6"></a>
 
 ## Install & Use
 
 
-<a id="org57a7c72"></a>
+<a id="org385c15c"></a>
 
 ### Server
 
@@ -79,7 +79,7 @@ To install the server, clone this repo, `cd` in the repo and run:
     pip install -e "."
 
 Create a configuration file in `/etc/jsondispatch/jsondispatch.conf` (by
-default, `--config` option lets you setup a custom file location). See [1.1](#org7800d12)
+default, `--config` option lets you setup a custom file location). See [1.1](#org2c3342d)
 for example configurations.
 
 To run the server, `cd` in the repo and run:
@@ -90,7 +90,7 @@ You can change the default port and config file location, give the `--help`
 argument for detailed instructions.
 
 
-<a id="org5a2581f"></a>
+<a id="org63ac2a0"></a>
 
 ### Firefox extension
 
@@ -102,11 +102,12 @@ fill-in the server URL. If you're running the server locally with default port,
 then the URL is `http://127.0.0.1:8850/trigger`.
 
 Now you can just right click on a link and go in the submenu `Send to Json
-Dispatch`, then choose the `Queue download of program` option. Of course,
-first make sure you installed and started the server as explained in [1.2.1](#org57a7c72).
+Dispatch`, then choose one of the options which correspond to the configured
+triggers. Of course, first make sure you installed and started the server as
+explained in [1.2.1](#org385c15c).
 
 
-<a id="orgeb99c26"></a>
+<a id="org9c5e2ac"></a>
 
 ## Develop
 

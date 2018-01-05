@@ -46,7 +46,7 @@ When sending the above POST request, jsondispatch will call the ~addUri~ RPC
 method of aria2 with the given magnet URL and the hardcoded =dir= argument.
 
 Or just use the browser extension which does this for you with a right click on
-a magnet URL.
+a magnet URL (or any link for that matter).
 
 ** Install & Use
 *** Server
@@ -80,8 +80,9 @@ fill-in the server URL. If you're running the server locally with default port,
 then the URL is =http://127.0.0.1:8850/trigger=.
 
 Now you can just right click on a link and go in the submenu =Send to Json
-Dispatch=, then choose the =Queue download of program= option. Of course,
-first make sure you installed and started the server as explained in [[Server]].
+Dispatch=, then choose one of the options which correspond to the configured
+triggers. Of course, first make sure you installed and started the server as
+explained in [[Server]].
 
 ** Develop
 

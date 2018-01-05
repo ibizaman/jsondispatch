@@ -9,11 +9,14 @@
         <fieldset>
             <form>
                 <legend>Options</legend>
-                <p>Json Dispatch server json rpc, such as https://192.168.1.10:8850/trigger</p>
+                <p>Json Dispatch server json rpc, such as https://192.168.1.10:8850</p>
                 <table>
                     <tr><td>json-rpc-url</td><td><input type="text" id="server_url" size=64 ></td></tr>
                 </table>
                 <button type="submit" id="btnsave">Save</button>
+                <ul id="menuitems">
+                </ul>
+                <button id="btnupdate">Update List</button>
             </form>
         </fieldset>
         <script src="util.js"></script>
