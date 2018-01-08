@@ -16,10 +16,10 @@ function restoreOptions() {
 
 function refreshMenuItems(e) {
     getRequest('triggers', function(menu_items) {
-        xplatform_storage_set('menu_items', menu_items.join(','));
-    });
+        xplatform_storage_set('menu_items', menu_items);
 
-    updateMenuItemsFromStorage();
+        updateMenuItemsFromStorage();
+    });
 }
 
 function updateMenuItemsFromStorage() {
