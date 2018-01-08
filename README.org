@@ -8,9 +8,8 @@ examples.
 =Python 3.6= supported only, although other =Python 3.X= versions should work
 too.
 
-Also provides a Firefox (Chrome coming soon) extension that talks to the server
-and allows you to right click on a URL/link in your browser and "send it to" the
-server.
+Also provides a Firefox and Chrome extension that talks to the server and allows
+you to right click on a URL/link in your browser and "send it to" the server.
 
 ** Use Cases
 *** Send file to aria2 and set download dir based on category
@@ -70,14 +69,20 @@ To run the server, ~cd~ in the repo and run:
 You can change the default port and config file location, give the =--help=
 argument for detailed instructions.
 
-*** Firefox extension
+*** Browser extension
 
-Go to =about:debugging= and click on =Load Temporary Add-On=. Browse to the
-=firefox/= folder in this repo and select the =manifest.json= file.
+For Firefox, go to =about:debugging= and click on =Load Temporary Add-On=.
+Browse to the =browserextension/= folder in this repo and select the
+=manifest.json= file. Now that the addon is added, go to the addons settings
+page =about:addons= and fill-in the server URL.
 
-Now that the addon is added, go to the addons settings page =about:addons= and
-fill-in the server URL. If you're running the server locally with default port,
-then the URL is =http://127.0.0.1:8850/trigger=.
+If you're running the server locally with default port, then the URL is
+=http://127.0.0.1:8850/trigger=.
+
+For Chrome, go to =chrome://extensions/=, enable =Developer mode=, click on
+=Load unpacked extension=. Browse to the =firefox/= folder in this repo and
+click on =open=. Now that the addon is added, click on the addon's =option=
+button and fill-in the server URL.
 
 Now you can just right click on a link and go in the submenu =Send to Json
 Dispatch=, then choose one of the options which correspond to the configured
@@ -89,3 +94,7 @@ explained in [[Server]].
 #+BEGIN_SRC bash
   pip install -e ".[dev,test]"
 #+END_SRC
+
+** License
+
+The icon was taken from https://feathericons.com/, it's under MIT License.

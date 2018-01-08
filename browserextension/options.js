@@ -1,16 +1,14 @@
 function saveGeneralOptions(e) {
     e.preventDefault();
 
-    browser.storage.local.set({
-        server_url: document.querySelector("#server_url").value
-    });
+    xplatform_storage_set('server_url', document.querySelector("#server_url").value);
 
     refreshMenuItems();
 }
 
 function restoreOptions() {
-    browser.storage.local.get('server_url').then((res) => {
-        document.querySelector("#server_url").value = res.server_url || '';
+    xplatform_storage_get('server_url', function (settings) {
+        document.querySelector("#server_url").value = settings.server_url || '';
     });
 
     updateMenuItemsFromStorage();
@@ -18,24 +16,21 @@ function restoreOptions() {
 
 function refreshMenuItems(e) {
     getRequest('triggers', function(menu_items) {
-        browser.storage.local.set({
-            menu_items: menu_items
-        });
+        xplatform_storage_set('menu_items', menu_items.join(','));
     });
 
     updateMenuItemsFromStorage();
 }
 
 function updateMenuItemsFromStorage() {
-    browser.storage.local.get('menu_items').then((res) => {
-        // update settings menu items
+    xplatform_storage_get('menu_items', function (settings) {
         var ul = document.querySelector('#menuitems');
 
         while (ul.firstChild) {
             ul.removeChild(ul.firstChild);
         }
 
-        var menu_items = res.menu_items;
+        var menu_items = settings.menu_items || [];
         var menu_items_length = menu_items.length;
         for (var i = 0; i < menu_items_length; i++) {
             var li = document.createElement("li");
@@ -43,9 +38,9 @@ function updateMenuItemsFromStorage() {
             ul.appendChild(li);
         }
 
-        browser.contextMenus.removeAll().then(function () {
+        xplatform_contextMenus_removeAll(function () {
             for (var i = 0; i < menu_items_length; i++) {
-                browser.contextMenus.create({
+                xplatform_browser.contextMenus.create({
                     id: menu_items[i],
                     title: menu_items[i],
                     contexts: ["link"]

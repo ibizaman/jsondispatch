@@ -1,4 +1,4 @@
-browser.contextMenus.onClicked.addListener((info, tab) => {
+xplatform_browser.contextMenus.onClicked.addListener((info, tab) => {
     sendTrigger(info.menuItemId, info.linkUrl);
 });
 
