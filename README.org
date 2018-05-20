@@ -25,7 +25,7 @@ Config file =/etc/jsondispatch/jsondispatch.conf=:
       rpc_secret: mYs3Cr3t
 
   triggers:
-    - download_program_uri:
+    download_program_uri:
       - command: aria2
         method: addUri
         arguments:
