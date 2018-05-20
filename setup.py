@@ -10,7 +10,7 @@ with _open(path.join(HERE, 'README.md'), encoding='utf-8') as f:
 
     setup(
         name='jsondispatch',
-        version='0.1',
+        version='0.1.0',
         description='Dispatch commands with JSON HTTP requests',
         long_description=LONG_DESCRIPTION,
         license='BSD3',
