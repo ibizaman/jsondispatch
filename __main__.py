@@ -35,7 +35,7 @@ async def trigger_handler(request):
                 for name, value in command.get('arguments', {}).items()}
         command_module = import_module(command['command'])
         command_method = getattr(command_module, command['method'])
-        command_config = request.app['config']['common'].get(command['command'], {})
+        command_config = request.app['config']['commands'].get(command['command'], {})
         results.append(await command_method(command_config, **args))
 
     return web.json_response(results)
@@ -104,11 +104,11 @@ def parse_configs(config_files):
         if 'domain' not in conf['cors']:
             errors.append("Missing required field 'cors.domain'.")
 
-    if 'common' not in conf:
-        errors.append("Missing required field 'common'.")
+    if 'commands' not in conf:
+        errors.append("Missing required field 'commands'.")
 
-    if not isinstance(conf['common'], dict):
-        errors.append("Field 'common' must be a dict, not {}.".format(type(conf['triggers'])))
+    if not isinstance(conf['commands'], dict):
+        errors.append("Field 'commands' must be a dict, not {}.".format(type(conf['triggers'])))
 
     if 'triggers' not in conf:
         errors.append("Missing required field 'triggers'.")

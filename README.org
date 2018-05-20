@@ -19,7 +19,7 @@ Config file =/etc/jsondispatch/jsondispatch.conf=:
   cors:
     domain: '*'
 
-  common:
+  commands:
     aria2:
       url: http://localhost:6800/jsonrpc
       rpc_secret: mYs3Cr3t
