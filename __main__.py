@@ -18,7 +18,9 @@ import aiohttp_cors
 
 
 DEFAULT_CONFIG_FILES = [Path(p)
-                        for p in ["/etc/jsondispatch/jsondispatch.yaml", "./config/jsondispatch.yaml"]]
+                        for p in ["/etc/jsondispatch/jsondispatch.yaml",
+                                  Path.home() / ".config/jsondispatch/jsondispatch.yaml",
+                                  "./config/jsondispatch.yaml"]]
 
 
 async def trigger_handler(request):
