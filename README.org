@@ -77,7 +77,7 @@ Browse to the =browserextension/= folder in this repo and select the
 page =about:addons= and fill-in the server URL.
 
 If you're running the server locally with default port, then the URL is
-=http://127.0.0.1:8850/trigger=.
+=http://127.0.0.1:8850=.
 
 For Chrome, go to =chrome://extensions/=, enable =Developer mode=, click on
 =Load unpacked extension=. Browse to the =firefox/= folder in this repo and
