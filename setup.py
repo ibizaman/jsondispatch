@@ -19,6 +19,9 @@ with _open(path.join(HERE, 'README.md'), encoding='utf-8') as f:
         url='https://github.com/ibizaman/jsondispatch',
         download_url='https://github.com/ibizaman/jsondispatch/archive/0.1.0.tar.gz',
         keywords=['json', 'aiohttp'],
+        entry_points = {
+            'console_scripts': ['jsondispatch=jsondispatch.__main__:main'],
+        },
         install_requires=[
             'aiohttp == 2.3.7',
             'aiohttp_cors == 0.6.0',
