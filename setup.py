@@ -4,7 +4,7 @@ from os import path
 from setuptools import setup
 
 HERE = path.abspath(path.dirname(__file__))
-VERSION = '0.1.2'
+VERSION = '0.1.3'
 
 with _open(path.join(HERE, 'README.md'), encoding='utf-8') as f:
     LONG_DESCRIPTION = f.read()
@@ -17,7 +17,7 @@ with _open(path.join(HERE, 'README.md'), encoding='utf-8') as f:
         author='Pierre Penninckx',
         author_email='ibizapeanut@gmail.com',
         license='GPLv3',
-        packages=['jsondispatch'],
+        packages=['jsondispatch', 'jsondispatch/trigger_commands'],
         url='https://github.com/ibizaman/jsondispatch',
         download_url='https://github.com/ibizaman/jsondispatch/archive/{}.tar.gz'.format(VERSION),
         keywords=['json', 'aiohttp'],
