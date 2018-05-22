@@ -4,13 +4,14 @@ from os import path
 from setuptools import setup
 
 HERE = path.abspath(path.dirname(__file__))
+VERSION = '0.1.2'
 
 with _open(path.join(HERE, 'README.md'), encoding='utf-8') as f:
     LONG_DESCRIPTION = f.read()
 
     setup(
         name='jsondispatch',
-        version='0.1.1',
+        version=VERSION,
         description='Dispatch commands with JSON HTTP requests',
         long_description=LONG_DESCRIPTION,
         author='Pierre Penninckx',
@@ -18,7 +19,7 @@ with _open(path.join(HERE, 'README.md'), encoding='utf-8') as f:
         license='GPLv3',
         packages=['jsondispatch'],
         url='https://github.com/ibizaman/jsondispatch',
-        download_url='https://github.com/ibizaman/jsondispatch/archive/0.1.1.tar.gz',
+        download_url='https://github.com/ibizaman/jsondispatch/archive/{}.tar.gz'.format(VERSION),
         keywords=['json', 'aiohttp'],
         entry_points = {
             'console_scripts': ['jsondispatch=jsondispatch.__main__:main'],
