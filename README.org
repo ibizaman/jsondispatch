@@ -29,7 +29,7 @@ Config file =/etc/jsondispatch/jsondispatch.conf=:
       - command: aria2
         method: addUri
         arguments:
-          url: {url}
+          url: $url
           dir: /srv/backups/programs
 #+END_SRC
 
