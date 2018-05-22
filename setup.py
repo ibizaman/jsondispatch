@@ -13,8 +13,12 @@ with _open(path.join(HERE, 'README.md'), encoding='utf-8') as f:
         version='0.1.0',
         description='Dispatch commands with JSON HTTP requests',
         long_description=LONG_DESCRIPTION,
-        license='BSD3',
+        author='Pierre Penninckx',
+        license='GPLv3',
         packages=find_packages(),
+        url='https://github.com/ibizaman/jsondispatch',
+        download_url='https://github.com/ibizaman/jsondispatch/archive/0.1.0.tar.gz',
+        keywords=['json', 'aiohttp'],
         install_requires=[
             'aiohttp == 2.3.7',
             'aiohttp_cors == 0.6.0',
