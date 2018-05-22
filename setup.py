@@ -1,7 +1,7 @@
 from codecs import open as _open
 from os import path
 
-from setuptools import setup, find_packages
+from setuptools import setup
 
 HERE = path.abspath(path.dirname(__file__))
 
@@ -16,7 +16,7 @@ with _open(path.join(HERE, 'README.md'), encoding='utf-8') as f:
         author='Pierre Penninckx',
         author_email='ibizapeanut@gmail.com',
         license='GPLv3',
-        packages=find_packages(),
+        packages=['jsondispatch'],
         url='https://github.com/ibizaman/jsondispatch',
         download_url='https://github.com/ibizaman/jsondispatch/archive/0.1.1.tar.gz',
         keywords=['json', 'aiohttp'],
