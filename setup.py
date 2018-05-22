@@ -10,7 +10,7 @@ with _open(path.join(HERE, 'README.md'), encoding='utf-8') as f:
 
     setup(
         name='jsondispatch',
-        version='0.1.0',
+        version='0.1.1',
         description='Dispatch commands with JSON HTTP requests',
         long_description=LONG_DESCRIPTION,
         author='Pierre Penninckx',
@@ -18,7 +18,7 @@ with _open(path.join(HERE, 'README.md'), encoding='utf-8') as f:
         license='GPLv3',
         packages=find_packages(),
         url='https://github.com/ibizaman/jsondispatch',
-        download_url='https://github.com/ibizaman/jsondispatch/archive/0.1.0.tar.gz',
+        download_url='https://github.com/ibizaman/jsondispatch/archive/0.1.1.tar.gz',
         keywords=['json', 'aiohttp'],
         entry_points = {
             'console_scripts': ['jsondispatch=jsondispatch.__main__:main'],
