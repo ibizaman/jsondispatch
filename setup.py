@@ -14,6 +14,7 @@ with _open(path.join(HERE, 'README.md'), encoding='utf-8') as f:
         description='Dispatch commands with JSON HTTP requests',
         long_description=LONG_DESCRIPTION,
         author='Pierre Penninckx',
+        author_email='ibizapeanut@gmail.com',
         license='GPLv3',
         packages=find_packages(),
         url='https://github.com/ibizaman/jsondispatch',
