@@ -49,7 +49,7 @@ def get_triggers_handler(request):
 
 
 def import_module(module_name):
-    spec = importlib.util.spec_from_file_location(module_name, 'trigger_commands/' + module_name + '.py')
+    spec = importlib.util.spec_from_file_location(module_name, Path(__file__).parent / 'trigger_commands' / (module_name + '.py'))
     assert spec is not None, 'Could not import module {}'.format('trigger_commands.' + module_name)
     module = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(module)
