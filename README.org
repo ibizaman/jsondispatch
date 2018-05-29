@@ -95,6 +95,15 @@ explained in [[Server]].
   pip install -e ".[dev,test]"
 #+END_SRC
 
+*** Publish firefox extension
+
+1. [[https://developer.mozilla.org/en-US/Add-ons/WebExtensions/Package_your_extension_][Zip]] the file:
+    #+BEGIN_SRC bash
+      cd browserextension
+      zip -r -FS ../browserextension.zip *
+    #+END_SRC
+
+
 ** License
 
 The icon was taken from https://feathericons.com/, it's under MIT License.

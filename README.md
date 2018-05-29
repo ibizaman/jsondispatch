@@ -1,24 +1,24 @@
 
 # Table of Contents
 
-1.  [Json Dispatch](#org1ebd606)
-    1.  [Use Cases](#orgd2b20aa)
-        1.  [Send file to aria2 and set download dir based on category](#orgb7f7725)
-    2.  [Install & Use](#org902adaf)
-        1.  [Server](#org5b297f7)
-        2.  [Browser extension](#orgdb0ace7)
-    3.  [Develop](#orgc64c5ed)
-        1.  [Files Layout](#orgdc9d277)
-    4.  [License](#org80ce1fa)
+1.  [Json Dispatch](#orgd86c08b)
+    1.  [Use Cases](#org34431b5)
+        1.  [Send file to aria2 and set download dir based on category](#org22a58f9)
+    2.  [Install & Use](#orgc80781a)
+        1.  [Server](#orgb090a6e)
+        2.  [Browser extension](#org60156d8)
+    3.  [Develop](#orgc820fd4)
+        1.  [Publish firefox extension](#org92d0e36)
+    4.  [License](#org1858501)
 
 
-<a id="org1ebd606"></a>
+<a id="orgd86c08b"></a>
 
 # Json Dispatch
 
 Server program written in python that accepts HTTP POST requests with a JSON
 payload and forwards the request to another program, after transforming it in a
-configurable way. Quite generic, but that's the goal. See [1.1](#orgd2b20aa) for concrete
+configurable way. Quite generic, but that's the goal. See [1.1](#org34431b5) for concrete
 examples.
 
 `Python 3.6` supported only, although other `Python 3.X` versions should work
@@ -28,12 +28,12 @@ Also provides a Firefox and Chrome extension that talks to the server and allows
 you to right click on a URL/link in your browser and "send it to" the server.
 
 
-<a id="orgd2b20aa"></a>
+<a id="org34431b5"></a>
 
 ## Use Cases
 
 
-<a id="orgb7f7725"></a>
+<a id="org22a58f9"></a>
 
 ### Send file to aria2 and set download dir based on category
 
@@ -52,7 +52,7 @@ Config file `/etc/jsondispatch/jsondispatch.conf`:
         - command: aria2
           method: addUri
           arguments:
-            url: {url}
+            url: $url
             dir: /srv/backups/programs
 
 JSON payload to send to the server with URL ending with
@@ -69,12 +69,12 @@ Or just use the browser extension which does this for you with a right click on
 a magnet URL (or any link for that matter).
 
 
-<a id="org902adaf"></a>
+<a id="orgc80781a"></a>
 
 ## Install & Use
 
 
-<a id="org5b297f7"></a>
+<a id="orgb090a6e"></a>
 
 ### Server
 
@@ -83,7 +83,7 @@ To install the server, clone this repo, `cd` in the repo and run:
     pip install -e "."
 
 Create a configuration file in `/etc/jsondispatch/jsondispatch.conf` (by
-default, `--config` option lets you setup a custom file location). See [1.1](#orgd2b20aa)
+default, `--config` option lets you setup a custom file location). See [1.1](#org34431b5)
 for example configurations.
 
 To run the server, `cd` in the repo and run:
@@ -94,7 +94,7 @@ You can change the default port and config file location, give the `--help`
 argument for detailed instructions.
 
 
-<a id="orgdb0ace7"></a>
+<a id="org60156d8"></a>
 
 ### Browser extension
 
@@ -114,22 +114,27 @@ button and fill-in the server URL.
 Now you can just right click on a link and go in the submenu `Send to Json
 Dispatch`, then choose one of the options which correspond to the configured
 triggers. Of course, first make sure you installed and started the server as
-explained in [1.2.1](#org5b297f7).
+explained in [1.2.1](#orgb090a6e).
 
 
-<a id="orgc64c5ed"></a>
+<a id="orgc820fd4"></a>
 
 ## Develop
 
     pip install -e ".[dev,test]"
 
 
-<a id="orgdc9d277"></a>
+<a id="org92d0e36"></a>
 
-### Files Layout
+### Publish firefox extension
+
+1.  [Zip](https://developer.mozilla.org/en-US/Add-ons/WebExtensions/Package_your_extension_) the file:
+    
+        cd browserextension
+        zip -r -FS ../browserextension.zip *
 
 
-<a id="org80ce1fa"></a>
+<a id="org1858501"></a>
 
 ## License
 
