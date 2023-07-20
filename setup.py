@@ -20,7 +20,7 @@ with _open(path.join(HERE, 'README.md'), encoding='utf-8') as f:
         download_url='https://github.com/ibizaman/jsondispatch/archive/0.1.0.tar.gz',
         keywords=['json', 'aiohttp'],
         install_requires=[
-            'aiohttp == 3.7.4',
+            'aiohttp == 3.8.5',
             'aiohttp_cors == 0.6.0',
             'yarl == 0.18.0',
             'PyYAML == 5.4',
