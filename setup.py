@@ -31,7 +31,7 @@ with _open(path.join(HERE, 'README.md'), encoding='utf-8') as f:
             ],
             'test': [
                 'coverage == 4.4.1',
-                'pytest == 3.1.3',
+                'pytest == 9.0.3',
                 'pytest-cov == 2.5.1',
             ],
         }
